@@ -1,0 +1,5 @@
+/home/digitech/Desktop/LunaLuxLang/build/CMakeFiles/LunaLuxLang.dir
+/home/digitech/Desktop/LunaLuxLang/build/CMakeFiles/edit_cache.dir
+/home/digitech/Desktop/LunaLuxLang/build/CMakeFiles/rebuild_cache.dir
+/home/digitech/Desktop/LunaLuxLang/build/Src/CMakeFiles/edit_cache.dir
+/home/digitech/Desktop/LunaLuxLang/build/Src/CMakeFiles/rebuild_cache.dir

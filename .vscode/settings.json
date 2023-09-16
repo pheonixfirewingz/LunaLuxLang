@@ -1,0 +1,12 @@
+{
+    "C_Cpp.default.compilerPath": "/usr/bin/g++",
+    "files.associations": {
+        "variant": "cpp",
+        "optional": "cpp",
+        "cstdint": "cpp",
+        "string_view": "cpp",
+        "array": "cpp",
+        "vector": "cpp"
+    },
+    "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools"
+}

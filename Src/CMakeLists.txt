@@ -1,0 +1,14 @@
+ADD_FILES(
+    Translator.h
+    Translator.cpp
+    Lexer.h
+    Lexer.cpp
+    Parser.h
+    Parser.cpp
+    TypeChecker.h
+    TypeChecker.cpp
+    CppGen.h
+    CppGen.cpp
+    Ast.hpp
+    Entry.cpp
+)

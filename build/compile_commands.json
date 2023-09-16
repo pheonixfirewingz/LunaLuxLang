@@ -1,0 +1,38 @@
+[
+{
+  "directory": "/home/digitech/Desktop/LunaLuxLang/build",
+  "command": "/usr/bin/g++ -DDEBUG_MODE -DIS_GCC -DON_LINUX -DPROJECT_SOURCE_DIR=\\\"/home/digitech/Desktop/LunaLuxLang\\\" -I/home/digitech/Desktop/LunaLuxLang/Includes -I/home/digitech/Desktop/LunaLuxLang/STATIC -I/home/digitech/Desktop/LunaLuxLang/Src -g -std=gnu++23 -Wall -Wno-attributes -fno-exceptions -o CMakeFiles/LunaLuxLang.dir/Src/Entry.cpp.o -c /home/digitech/Desktop/LunaLuxLang/Src/Entry.cpp",
+  "file": "/home/digitech/Desktop/LunaLuxLang/Src/Entry.cpp",
+  "output": "CMakeFiles/LunaLuxLang.dir/Src/Entry.cpp.o"
+},
+{
+  "directory": "/home/digitech/Desktop/LunaLuxLang/build",
+  "command": "/usr/bin/g++ -DDEBUG_MODE -DIS_GCC -DON_LINUX -DPROJECT_SOURCE_DIR=\\\"/home/digitech/Desktop/LunaLuxLang\\\" -I/home/digitech/Desktop/LunaLuxLang/Includes -I/home/digitech/Desktop/LunaLuxLang/STATIC -I/home/digitech/Desktop/LunaLuxLang/Src -g -std=gnu++23 -Wall -Wno-attributes -fno-exceptions -o CMakeFiles/LunaLuxLang.dir/Src/Translator.cpp.o -c /home/digitech/Desktop/LunaLuxLang/Src/Translator.cpp",
+  "file": "/home/digitech/Desktop/LunaLuxLang/Src/Translator.cpp",
+  "output": "CMakeFiles/LunaLuxLang.dir/Src/Translator.cpp.o"
+},
+{
+  "directory": "/home/digitech/Desktop/LunaLuxLang/build",
+  "command": "/usr/bin/g++ -DDEBUG_MODE -DIS_GCC -DON_LINUX -DPROJECT_SOURCE_DIR=\\\"/home/digitech/Desktop/LunaLuxLang\\\" -I/home/digitech/Desktop/LunaLuxLang/Includes -I/home/digitech/Desktop/LunaLuxLang/STATIC -I/home/digitech/Desktop/LunaLuxLang/Src -g -std=gnu++23 -Wall -Wno-attributes -fno-exceptions -o CMakeFiles/LunaLuxLang.dir/Src/Lexer.cpp.o -c /home/digitech/Desktop/LunaLuxLang/Src/Lexer.cpp",
+  "file": "/home/digitech/Desktop/LunaLuxLang/Src/Lexer.cpp",
+  "output": "CMakeFiles/LunaLuxLang.dir/Src/Lexer.cpp.o"
+},
+{
+  "directory": "/home/digitech/Desktop/LunaLuxLang/build",
+  "command": "/usr/bin/g++ -DDEBUG_MODE -DIS_GCC -DON_LINUX -DPROJECT_SOURCE_DIR=\\\"/home/digitech/Desktop/LunaLuxLang\\\" -I/home/digitech/Desktop/LunaLuxLang/Includes -I/home/digitech/Desktop/LunaLuxLang/STATIC -I/home/digitech/Desktop/LunaLuxLang/Src -g -std=gnu++23 -Wall -Wno-attributes -fno-exceptions -o CMakeFiles/LunaLuxLang.dir/Src/Parser.cpp.o -c /home/digitech/Desktop/LunaLuxLang/Src/Parser.cpp",
+  "file": "/home/digitech/Desktop/LunaLuxLang/Src/Parser.cpp",
+  "output": "CMakeFiles/LunaLuxLang.dir/Src/Parser.cpp.o"
+},
+{
+  "directory": "/home/digitech/Desktop/LunaLuxLang/build",
+  "command": "/usr/bin/g++ -DDEBUG_MODE -DIS_GCC -DON_LINUX -DPROJECT_SOURCE_DIR=\\\"/home/digitech/Desktop/LunaLuxLang\\\" -I/home/digitech/Desktop/LunaLuxLang/Includes -I/home/digitech/Desktop/LunaLuxLang/STATIC -I/home/digitech/Desktop/LunaLuxLang/Src -g -std=gnu++23 -Wall -Wno-attributes -fno-exceptions -o CMakeFiles/LunaLuxLang.dir/Src/TypeChecker.cpp.o -c /home/digitech/Desktop/LunaLuxLang/Src/TypeChecker.cpp",
+  "file": "/home/digitech/Desktop/LunaLuxLang/Src/TypeChecker.cpp",
+  "output": "CMakeFiles/LunaLuxLang.dir/Src/TypeChecker.cpp.o"
+},
+{
+  "directory": "/home/digitech/Desktop/LunaLuxLang/build",
+  "command": "/usr/bin/g++ -DDEBUG_MODE -DIS_GCC -DON_LINUX -DPROJECT_SOURCE_DIR=\\\"/home/digitech/Desktop/LunaLuxLang\\\" -I/home/digitech/Desktop/LunaLuxLang/Includes -I/home/digitech/Desktop/LunaLuxLang/STATIC -I/home/digitech/Desktop/LunaLuxLang/Src -g -std=gnu++23 -Wall -Wno-attributes -fno-exceptions -o CMakeFiles/LunaLuxLang.dir/Src/CppGen.cpp.o -c /home/digitech/Desktop/LunaLuxLang/Src/CppGen.cpp",
+  "file": "/home/digitech/Desktop/LunaLuxLang/Src/CppGen.cpp",
+  "output": "CMakeFiles/LunaLuxLang.dir/Src/CppGen.cpp.o"
+}
+]

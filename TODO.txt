@@ -1,0 +1,5 @@
+1. type checker
+2. auto depointer conversion
+3. structs/classes (keywords to add for it 'construct', 'deconstruct','primitive')
+4. memory (keywords to add for it 'alloc','free')
+5. flesh out jetbrains plugin
