@@ -7,9 +7,9 @@ namespace LunaLuxLang
     const auto t = peekTokenSpan(); \
     t.value().type != x
 
-#define IS_NOT(t, x) t.value().type != x
+#define IS_NOT(t, x) (t.has_value() && t.value().type != x)
 
-#define IS(t, x) t.value().type == x
+#define IS(t, x) (t.has_value() && t.value().type == x)
 
 #define IS_OR_ERROR(x, msg)         \
     if (IS_NOT(peekTokenSpan(), x)) \
@@ -126,7 +126,7 @@ std::optional<std::variant<const BinaryOp, const Ptr<BinaryOp>>> Parser::parseBi
     return {};
 }
 
-std::optional<const std::variant<const floatConstant, const IntConstant, const VariableDefine, const FunctionCall,
+std::optional<const std::variant<const FloatConstant, const IntConstant, const VariableDefine, const FunctionCall,
                                  const Ptr<BinaryOp>>>
 Parser::parseBinaryLeaf() noexcept
 {
@@ -142,8 +142,8 @@ Parser::parseBinaryLeaf() noexcept
     else
     {
         const auto data = parseConstant();
-        if (std::holds_alternative<const floatConstant>(data))
-            return std::get<const floatConstant>(data);
+        if (std::holds_alternative<const FloatConstant>(data))
+            return std::get<const FloatConstant>(data);
         else
             return std::get<const IntConstant>(data);
     }
@@ -152,7 +152,7 @@ Parser::parseBinaryLeaf() noexcept
 
 void Parser::error(const char *msg) const noexcept
 {
-    const Span &span = input[current_index];
+    const Span &span = peekTokenSpan(-1).value();
     const std::string data = source.substr(span.offset, span.size);
     printf("PARSING ERROR: <%lu:%s> -> %s\n", span.line, data.c_str(), msg);
     fflush(stdout);
@@ -160,7 +160,7 @@ void Parser::error(const char *msg) const noexcept
 
 void Parser::warn(const char *msg) const noexcept
 {
-    const Span &span = input[current_index];
+    const Span &span = peekTokenSpan(-1).value();
     const std::string data = source.substr(span.offset, span.size);
     printf("PARSING WARNING: <%lu:%s> -> %s\n", span.line, data.c_str(), msg);
     fflush(stdout);
@@ -204,15 +204,18 @@ void Parser::warn(const char *msg) const noexcept
 std::optional<const Return> Parser::parseReturn() noexcept
 {
     (void)eatTokenSpan();
-    if (IS(peekTokenSpan(), Type::IDENTIFIER) && IS(peekTokenSpan(1), Type::L_CURLY))
+    const auto temp = peekTokenSpan(1);
+    if (IS(peekTokenSpan(), Type::IDENTIFIER) && IS(temp, Type::L_CURLY))
     {
         if (const auto caller = parseCaller(); caller.has_value())
             return Return(std::move(caller.value()));
         else
             return {};
     }
-    else if (IS(peekTokenSpan(), Type::L_CURLY) || IS(peekTokenSpan(), Type::INT_IDENTIFIER) ||
-             IS(peekTokenSpan(), Type::FLOAT_INT_IDENTIFIER) || IS(peekTokenSpan(), Type::IDENTIFIER))
+    else if (IS(peekTokenSpan(), Type::L_CURLY) ||
+             (IS(peekTokenSpan(), Type::INT_IDENTIFIER) && (temp.has_value() && isOpType(temp.value().type))) ||
+             (IS(peekTokenSpan(), Type::FLOAT_INT_IDENTIFIER) && (temp.has_value() && isOpType(temp.value().type))) ||
+             (IS(peekTokenSpan(), Type::IDENTIFIER) && (temp.has_value() && isOpType(temp.value().type))))
     {
         if (const auto binary = parseBinary(); binary.has_value())
             return Return(std::move(std::get<const BinaryOp>(binary.value())));
@@ -224,8 +227,8 @@ std::optional<const Return> Parser::parseReturn() noexcept
     else
     {
         const auto data = parseConstant();
-        if (std::holds_alternative<const floatConstant>(data))
-            return std::move(Return(std::move(std::get<const floatConstant>(data))));
+        if (std::holds_alternative<const FloatConstant>(data))
+            return std::move(Return(std::move(std::get<const FloatConstant>(data))));
         else
             return std::move(Return(std::move(std::get<const IntConstant>(data))));
     }
@@ -264,8 +267,8 @@ std::optional<const FunctionCall> Parser::parseCaller() noexcept
             else
             {
                 const auto data = parseConstant();
-                if (std::holds_alternative<const floatConstant>(data))
-                    args.args.emplace_back(std::move(std::get<const floatConstant>(data)));
+                if (std::holds_alternative<const FloatConstant>(data))
+                    args.args.emplace_back(std::move(std::get<const FloatConstant>(data)));
                 else
                     args.args.emplace_back(std::move(std::get<const IntConstant>(data)));
             }
@@ -343,13 +346,13 @@ std::optional<const Variable> Parser::parseVariable(bool is_global) noexcept
     }
 
     const auto data = parseConstant();
-    if (std::holds_alternative<const floatConstant>(data))
-        return Variable(std::move(name), std::move(info), std::move(std::get<const floatConstant>(data)));
+    if (std::holds_alternative<const FloatConstant>(data))
+        return Variable(std::move(name), std::move(info), std::move(std::get<const FloatConstant>(data)));
     else
         return Variable(std::move(name), std::move(info), std::move(std::get<const IntConstant>(data)));
 }
 
-std::variant<const IntConstant, const floatConstant> Parser::parseConstant() noexcept
+std::variant<const IntConstant, const FloatConstant> Parser::parseConstant() noexcept
 {
     if (IS(peekTokenSpan(), Type::INT_IDENTIFIER))
     {
@@ -357,7 +360,7 @@ std::variant<const IntConstant, const floatConstant> Parser::parseConstant() noe
         return IntConstant(number.contains('-') ? std::stoll(number) : std::stoull(number));
     }
     else
-        return floatConstant(std::stod(extractString()));
+        return FloatConstant(std::stod(extractString()));
 }
 
 std::optional<ModuleBlock> Parser::parse(OsType type)

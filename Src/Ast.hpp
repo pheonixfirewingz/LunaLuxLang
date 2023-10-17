@@ -56,10 +56,10 @@ struct IntConstant
     }
 };
 
-struct floatConstant
+struct FloatConstant
 {
     const float64_t number;
-    explicit floatConstant(const float64_t number_in) noexcept
+    explicit FloatConstant(const float64_t number_in) noexcept
         : number(number_in)
     {
     }
@@ -91,7 +91,7 @@ struct VariableDefine
 
 struct ArgsList
 {
-    std::vector<std::variant<const VariableDefine, const floatConstant, const IntConstant,const StringConstant, const Nullptr>> args;
+    std::vector<std::variant<const VariableDefine, const FloatConstant, const IntConstant,const StringConstant, const Nullptr>> args;
 };
 
 struct FunctionCall
@@ -108,17 +108,17 @@ struct FunctionCall
 struct BinaryOp
 {
     const Type op_type;
-    const std::variant<const floatConstant, const IntConstant, const VariableDefine, const FunctionCall,
+    const std::variant<const FloatConstant, const IntConstant, const VariableDefine, const FunctionCall,
                        const Ptr<BinaryOp>>
         left;
-    const std::variant<const floatConstant, const IntConstant, const VariableDefine, const FunctionCall,
+    const std::variant<const FloatConstant, const IntConstant, const VariableDefine, const FunctionCall,
                        const Ptr<BinaryOp>>
         right;
     explicit BinaryOp(const Type op_type_in,
-                      const std::variant<const floatConstant, const IntConstant, const VariableDefine,
+                      const std::variant<const FloatConstant, const IntConstant, const VariableDefine,
                                          const FunctionCall, const Ptr<BinaryOp>>
                           left_in,
-                      const std::variant<const floatConstant, const IntConstant, const VariableDefine,
+                      const std::variant<const FloatConstant, const IntConstant, const VariableDefine,
                                          const FunctionCall, const Ptr<BinaryOp>>
                           right_in) noexcept
         : op_type(op_type_in)
@@ -132,11 +132,11 @@ struct Variable
 {
     const std::string name;
     const DataInfo data_info;
-    const std::variant<const floatConstant, const IntConstant, const Nullptr, const FunctionCall, const BinaryOp>
+    const std::variant<const FloatConstant, const IntConstant, const Nullptr, const FunctionCall, const BinaryOp>
         init_data;
     explicit Variable(
         const std::string name_in, const DataInfo data_info_in,
-        const std::variant<const floatConstant, const IntConstant, const Nullptr, const FunctionCall, const BinaryOp>
+        const std::variant<const FloatConstant, const IntConstant, const Nullptr, const FunctionCall, const BinaryOp>
             init_data_in = Nullptr()) noexcept
         : name(std::move(name_in))
         , data_info(std::move(data_info_in))
@@ -147,10 +147,10 @@ struct Variable
 
 struct Return
 {
-    const std::variant<const IntConstant, const floatConstant, const FunctionCall, const VariableDefine, const Nullptr,
+    const std::variant<const IntConstant, const FloatConstant, const FunctionCall, const VariableDefine, const Nullptr,
                        const BinaryOp>
         data;
-    explicit Return(const std::variant<const IntConstant, const floatConstant, const FunctionCall, const VariableDefine,
+    explicit Return(const std::variant<const IntConstant, const FloatConstant, const FunctionCall, const VariableDefine,
                                        const Nullptr, const BinaryOp>
                         data_in) noexcept
         : data(std::move(data_in))

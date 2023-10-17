@@ -201,7 +201,7 @@ void CppGen::gen(const ExeBlock &node) const noexcept
                    stm);
 }
 
-void CppGen::gen(const floatConstant &node) noexcept
+void CppGen::gen(const FloatConstant &node) noexcept
 {
     code << std::to_string(node.number);
 }

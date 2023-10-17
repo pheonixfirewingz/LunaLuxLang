@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/LunaLuxLang.iml" filepath="$PROJECT_DIR$/.idea/LunaLuxLang.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/LunaLuxLang2.iml" filepath="$PROJECT_DIR$/.idea/LunaLuxLang2.iml" />
     </modules>
   </component>
 </project>

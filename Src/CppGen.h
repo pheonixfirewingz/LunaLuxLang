@@ -25,7 +25,7 @@ class CppGen
     void gen(const ArgsList &node) noexcept;
     void gen(const Nullptr &node) noexcept;
     void gen(const VariableDefine &node) noexcept;
-    void gen(const floatConstant &node) noexcept;
+    void gen(const FloatConstant &node) noexcept;
     void gen(const StringConstant &node) noexcept;
     void gen(const IntConstant &node) const noexcept;
     void gen(const int64_t &node) noexcept;

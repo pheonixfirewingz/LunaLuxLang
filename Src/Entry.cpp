@@ -7,6 +7,7 @@
 #include <libos/Error.h>
 #include <libos/FileIO.h>
 using namespace LunaLuxLang;
+#undef DEBUG_MODE
 #ifdef DEBUG_MODE
 const char *ar = "./../test.lls";
 const char *args =
@@ -16,6 +17,10 @@ const char *args =
 // engine entry point
 int main(int argc, char *argv[])
 {
+    /*for(int i  = 0; i < argc; i++)
+    {
+        losPrintDebug(argv[i]);
+    }*/
     // libos abi check
     if (libOSABIVersion() != LOS_ABI_VERSION_1_1)
     {
@@ -24,12 +29,12 @@ int main(int argc, char *argv[])
     }
     // args check
 #ifndef DEBUG_MODE
-    if (argc >= 1)
+    if (argc <= 1)
     {
         losPrintError("you can't give no LunaLuxLangCompiler args");
         return EXIT_FAILURE;
     }
-    argc = argc - 2;
+    argc = argc - 1;
 #else
     argc = 0;
 #endif
@@ -37,7 +42,7 @@ int main(int argc, char *argv[])
     // libos start
     libOSInit();
     {
-        //read source file
+        // read source file
         std::string source;
         {
             // we are creating the file io file infomation to open the file
@@ -68,16 +73,25 @@ int main(int argc, char *argv[])
             // we don't need the file anymore so let's close it and move the C lang string to a c++ std::string
             losCloseFile(handle);
             source = std::string(std::move(buffer), std::move(buffer_size));
-            //we need to clean our raw pointer
+            // we need to clean our raw pointer
             delete buffer;
         }
         if (auto _module_ = Parser(std::move(source), std::move(Lexer(source)))(); _module_.has_value())
         {
             // let's type check the language to make sure the developer is writing correct code
-            if(TypeChecker()(_module_.value()))
+            if (TypeChecker()(_module_.value()))
             {
                 losPrintError("type checker failed");
                 return EXIT_FAILURE;
+            }
+            // temp for test runner
+            if (argc <= 2)
+            {
+                if (std::strcmp(argv[2], "-n_cpp") == 0)
+                {
+                    libOSCleanUp();
+                    return 0;
+                }
             }
             // generate cpp from the LunaLuxLang AST
             std::string code = CppGen()(_module_.value());
@@ -110,7 +124,16 @@ int main(int argc, char *argv[])
                 // we don't need the file anymore so let's close it
                 losCloseFile(handle);
             }
-            //we start building the command to pass the source to c++
+            // temp for test runner
+            if (argc <= 2)
+            {
+                if (std::strcmp(argv[2], "-n_cpp_compiler") == 0)
+                {
+                    libOSCleanUp();
+                    return 0;
+                }
+            }
+            // we start building the command to pass the source to c++
             std::stringstream stream;
             stream << "g++ ";
 #ifdef DEBUG_MODE
@@ -132,7 +155,11 @@ int main(int argc, char *argv[])
 #endif
             stream << ".cpp";
             stream << " -o ";
+#ifdef DEBUG_MODE
             stream << ar;
+#else
+            stream << argv[1];
+#endif
             stream << ".o";
 #ifdef DEBUG_MODE
             printf("PASSING TO G++: %s\n", stream.str().c_str());
@@ -161,6 +188,8 @@ int main(int argc, char *argv[])
                 losCloseFile(handle);
             }
         }
+        else
+            error = 1;
     }
     // libos cleanup
     libOSCleanUp();

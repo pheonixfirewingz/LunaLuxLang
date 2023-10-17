@@ -36,7 +36,7 @@ static constexpr std::array<std::pair<std::string_view, Type>, 52> lpt{{{"import
                                                                         {"modulo"sv, Type::MODULO},
                                                                         {"="sv, Type::EQUAL},
                                                                         {"global"sv, Type::GLOBAL},
-                                                                        {"mutable"sv, Type::MUT},
+                                                                        {"mut"sv, Type::MUT},
                                                                         {"ptr"sv, Type::PTR},
                                                                         {"ref"sv, Type::REF},
                                                                         {"int8"sv, Type::INT8},

@@ -19,14 +19,14 @@ class Parser
     [[nodiscard]] inline const std::string extractString() noexcept;
     [[nodiscard]] std::optional<std::variant<const BinaryOp, const Ptr<BinaryOp>>> parseBinary(
         bool is_sub = false) noexcept;
-    [[nodiscard]] std::optional<const std::variant<const floatConstant, const IntConstant, const VariableDefine,
+    [[nodiscard]] std::optional<const std::variant<const FloatConstant, const IntConstant, const VariableDefine,
                                                    const FunctionCall, const Ptr<BinaryOp>>>
     parseBinaryLeaf() noexcept;
     [[nodiscard]] std::optional<const ExeBlock> parseBlock() noexcept;
     [[nodiscard]] std::optional<const Return> parseReturn() noexcept;
     [[nodiscard]] std::optional<const FunctionCall> parseCaller() noexcept;
     [[nodiscard]] std::optional<const Variable> parseVariable(bool is_global = false) noexcept;
-    [[nodiscard]] std::variant<const IntConstant, const floatConstant> parseConstant() noexcept;
+    [[nodiscard]] std::variant<const IntConstant, const FloatConstant> parseConstant() noexcept;
 
     inline const std::optional<const Span> eatTokenSpan() noexcept
     {

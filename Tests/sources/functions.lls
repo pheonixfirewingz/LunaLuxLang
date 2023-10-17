@@ -1,0 +1,58 @@
+modules functions_tests
+
+func test0() -> int8 
+{
+    ret 0
+}
+
+func test1(int8 x) -> int8 
+{
+    ret 0
+}
+
+func test2(int8 x,int8 y) -> int8 
+{
+    ret 0
+}
+
+
+func test3(int8 x, int8 y, ) -> int8 
+{
+    ret 0
+}
+
+public test4() -> int8 
+{
+    ret 0
+}
+
+public test5(int8 x) -> int8 
+{
+    ret 0
+}
+
+public test6(int8 x,int8 y) -> int8 
+{
+    ret 0
+}
+
+public test7(int8 x, int8 y, ) -> int8 
+{
+    ret 0
+}
+
+func test8() -> int8 ret 0
+
+func test9(int8 x) -> int8 ret 0
+
+func test10(int8 x,int8 y) -> int8 ret 0
+
+func test11(int8 x, int8 y, ) -> int8 ret 0
+
+public test12() -> int8 ret 0
+
+public test13(int8 x) -> int8 ret 0
+
+public test14(int8 x,int8 y) -> int8 ret 0
+
+public test15(int8 x, int8 y, ) -> int8 ret 0

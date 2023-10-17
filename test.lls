@@ -1,16 +1,8 @@
-module test
+module calculator
 import cpp stdio
 
-global float32 PI = 3.1415926535
-
-func test(int64 p,int64 z) -> int64
+public main() -> mut int32 
 {
-    ret p + z + PI
-}
-
-/* program main */
-public main() -> int32 
-{
-    printf("hello world")
-    ret test(89,21)
+    puts("hello world")
+    ret 0
 }

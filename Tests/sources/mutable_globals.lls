@@ -1,0 +1,45 @@
+module global_mutable_s
+
+global mut uint8 a = 0
+global mut uint16 b = 0
+global mut uint32 c = 0
+global mut uint64 d = 0
+
+global mut int8 e = 0
+global mut int16 f = 0
+global mut int32 g = 0
+global mut int64 h = 0
+
+global mut string i = 0
+
+global mut float32 j = 0
+global mut float64 k = 0
+
+global mut vec2 l = 0
+global mut vec3 m = 0
+global mut vec4 n = 0
+global mut quat o = 0
+
+global mut matrix4 p = 0
+
+global mut uint8 ptr a0 = 0
+global mut uint16 ptr b0 = 0
+global mut uint32 ptr c0 = 0
+global mut uint64 ptr d0 = 0
+
+global mut int8 ptr e0 = 0
+global mut int16 ptr f0 = 0
+global mut int32 ptr g0 = 0
+global mut int64 ptr h0 = 0
+
+global mut string ptr i0 = 0
+
+global mut float32 ptr j0 = 0
+global mut float64 ptr k0 = 0
+
+global mut vec2 ptr l0 = 0
+global mut vec3 ptr m0 = 0
+global mut vec4 ptr n0 = 0
+global mut quat ptr o0 = 0
+
+global mut matrix4 ptr p0 = 0

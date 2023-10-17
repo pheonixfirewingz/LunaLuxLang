@@ -1,0 +1,6 @@
+module main
+
+public main() -> mut int32
+{
+    ret 0
+}

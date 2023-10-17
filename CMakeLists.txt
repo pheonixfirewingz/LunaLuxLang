@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.22.1)
 project(LunaLuxLang CXX)
 
+set(BUILD_TESTS ON)
+
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake")
 include(Util)
 add_definitions(-DPROJECT_SOURCE_DIR="${CMAKE_SOURCE_DIR}")
@@ -67,3 +69,8 @@ add_subdirectory(${PROJECT_SOURCE_DIR}/Src)
 
 target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE libos Threads::Threads)
 #flagsSetup(LunaScript)
+
+if(${BUILD_TESTS})
+add_executable(TestRunner ${PROJECT_SOURCE_DIR}/Tests/Main.cpp)
+target_link_libraries(TestRunner PRIVATE libos)
+endif()

@@ -1,0 +1,45 @@
+module globals
+
+global uint8 a = 0
+global uint16 b = 0
+global uint32 c = 0
+global uint64 d = 0
+
+global int8 e = 0
+global int16 f = 0
+global int32 g = 0
+global int64 h = 0
+
+global string i = 0
+
+global float32 j = 0
+global float64 k = 0
+
+global vec2 l = 0
+global vec3 m = 0
+global vec4 n = 0
+global quat o = 0
+
+global matrix4 p = 0
+
+global uint8 ptr a0 = 0
+global uint16 ptr b0 = 0
+global uint32 ptr c0 = 0
+global uint64 ptr d0 = 0
+
+global int8 ptr e0 = 0
+global int16 ptr f0 = 0
+global int32 ptr g0 = 0
+global int64 ptr h0 = 0
+
+global string ptr i0 = 0
+
+global float32 ptr j0 = 0
+global float64 ptr k0 = 0
+
+global vec2 ptr l0 = 0
+global vec3 ptr m0 = 0
+global vec4 ptr n0 = 0
+global quat ptr o0 = 0
+
+global matrix4 ptr p0 = 0
